@@ -40,7 +40,9 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "./bin/init.unicorn.rb"
+      within "#{current_path}" do
+        execute "./bin/init.unicorn.rb"
+      end
     end
   end
 
