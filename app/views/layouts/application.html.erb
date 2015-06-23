@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bon</title>
+  <title><%= title %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= yield :head %>
   <%= csrf_meta_tags %>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans&Droid+Sans+Mono">
+  <meta name="keywords" content="<%= meta_keywords %>" />
+  <meta name="description" content="<%= meta_description %>" />
+  <meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1" />
 </head>
 <body>
+  <div id="flash_message" class="fragile"><%= flash_message %></div>
+  <header>
+    <%= link_to "bon", root_path %>
+    <nav>
+      <%= link_to "login", signin_path %>
+    </nav>
+  </header>
 
-<%= yield %>
+  <section>
+    <%= yield %>
+  </section>
+
+  <footer>
+    2015
+  </footer>
 
 </body>
 </html>

@@ -1,0 +1,18 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: bon 
+  password: bon123!
+
+development:
+  <<: *default
+  database: bon_development
+
+test:
+  <<: *default
+  database: bon_test
+
+production:
+  <<: *default
+  database: bon_production

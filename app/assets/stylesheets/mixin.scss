@@ -1,0 +1,200 @@
+@mixin selection {
+  ::-moz-selection { @content; }
+  ::selection { @content; }
+}
+
+@mixin transition($prop, $time, $method) {
+  -webkit-transition: $prop $time $method;
+  -moz-transition: $prop $time $method;
+  -o-transition: $prop $time $method;
+  transition: $prop $time $method;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-o-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+}
+
+@mixin animation-delay($str) {
+  -webkit-animation-delay: #{$str};
+  -moz-animation-delay: #{$str};
+  -o-animation-delay: #{$str};
+  animation-delay: #{$str};      
+}
+
+@mixin opacity($volume) {
+  filter:"alpha(opacity=" + $volume + ")";
+  -webkit-opacity:$volume * 0.01;
+  -moz-opacity:$volume * 0.01;
+  -o-opacity:$volume * 0.01;
+  opacity:$volume * 0.01;
+}
+
+@mixin middle {
+  position: relative;
+  top: 50%;
+  @include translate(0, -50%);
+}
+
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  transform: $transforms;
+}
+@mixin scale($x,$y) {
+  -webkit-transform: scale($x, $y);
+  -moz-transform: scale($x, $y);
+  -o-transform: scale($x, $y);
+  transform: scale($x, $y);
+}
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+@mixin translate ($x, $y) {
+  @include transform(translate($x, $y));
+}
+@mixin skew ($x, $y) {
+  @include transform(skew(#{$x}deg, #{$y}deg));
+}
+@mixin transform-origin ($origin) {
+  -webkit-transform-origin: $origin;
+  moz-transform-origin: $origin;
+  -o-transform-origin: $origin;
+  transform-origin: $origin;
+}
+
+@mixin linear-gradient ($direction, $colors-stops...) {
+  background: nth(nth($colors-stops, 1), 1);
+  background: -webkit-linear-gradient($direction, $colors-stops);
+  background: -moz-linear-gradient($direction, $colors-stops);
+  background: -o-linear-gradient($direction, $colors-stops);
+  background: linear-gradient($direction, $colors-stops);
+}
+
+.mono {
+  font-family: "Droid Sans mono", "Nanum Gothic Coding", monospace;
+}
+
+.hv {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif;
+}
+
+.mj {
+  font-family: "Times New Roman",Times,"Nanum Myeongjo",serif;
+}
+
+.nanum {
+  font-family: "Nanum Gothic","나눔 고딕","맑은 고딕","Malgun Gothic","Helvetica Neue","Helvetica",verdana,sans-serif;
+}
+
+.kopub {
+  font-family: 'KoPub Batang', serif;
+}
+
+.dotum {
+  font-family: "Dotum","돋움", sans-serif;
+  font-size: 11px;
+  letter-spacing: -1px;
+}
+
+.ellipsis {
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -o-text-overflow:ellipsis;
+  -moz-binding:url('/ellipsis.xml#ellipsis');
+  display:block;
+}
+
+.clearfix {
+	zoom:1;
+	&:before, &:after {
+		content: "\0020";
+		display: block;
+		height: 0;
+		overflow: hidden;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+$s_article_width: 755px; 
+
+$c_title: #3e3e3e;
+$c_text: #333;
+$c_text_light: #676a6c;
+$c_text_lighten: #999;
+$c_text_lightest: #aeaeae;
+$c_text_dark_white: #e9e9e9;
+
+$c_border: #c4c4c4;
+$c_border_light: #dadada;
+$c_border_lightest: #efefef;
+
+$c_light_blue: #2f96f0;
+$c_dark_blue: #1c73bf;
+$c_blue: #2981CE;
+$c_slate: #789;
+$c_aoi: #69D2E7;
+$c_pond: #A7DBD8;
+$c_storm: #E0E4CC;
+$c_goldfish: #F38630;
+$c_unreal: #FA6900;
+
+$mc_light_green: #99b433;
+$mc_green: #00a300;
+$mc_dark_green: #1e7145;
+$mc_magenta: #ff0097;
+$mc_light_purple: #9f00a7;
+$mc_purple: #7e3878;
+$mc_dark_purple: #603cba;
+$mc_darken: #1d1d1d;
+$mc_teal: #00aba9;
+$mc_light_blue: #eff4ff;
+$mc_blue: #2d89ef;
+$mc_dark_blue: #2b5797;
+$mc_yellow: #ffc40d;
+$mc_orange: #e3a21a;
+$mc_dark_orange: #da532c;
+$mc_red: #ee1111;
+$mc_dark_red: #b91d47;
+$mc_white: #ffffff;
+
+$cc_accd: #eb393f;
+$cc_know: #e87610;
+$cc_prob: #f4ba36;
+$cc_goss: #1cb444;
+$cc_real: #3865ed;
+$cc_ract: #81479a;
+
+$bc_pink: #ff4040;
+$bc_mind: #FF8B93;
+$bc_pitt: #F1C0BD;
+$bc_rand: #CBE2CC;
+$bc_whoo: #D9F5CC;
+
+$bc_vict: #F1396D;
+$bc_best: #FD6081;
+$bc_mint: #F3FFEB;
+$bc_ipod: #ACC95F;
+$bc_soup: #8F9924;
+

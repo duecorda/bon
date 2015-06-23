@@ -1,0 +1,340 @@
+hr.orhr {
+  position: relative;
+  background-color: #c9c9c9;
+  border: 0;
+  height: 1px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+hr.sectioning {
+  position: relative;
+  border: 0;
+  height: 1px;
+  margin: 0 auto !important;
+  width: 200px;
+  @include linear-gradient(left, white, $c_border, $c_border, white);
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  &.ilink {
+    color: $c_light_blue;
+    border-bottom: 1px solid transparent;
+    &:hover {
+      border-bottom-color: $c_light_blue;
+    }
+    &:active, &:focus {
+      border-bottom-style: dashed;
+    }
+  }
+  &.rlink {
+    color: $mc_red;
+    border-bottom: 1px solid transparent;
+    &:hover {
+      border-bottom-color: $c_light_blue;
+    }
+  }
+}
+
+img {
+  vertical-align: middle;
+}
+
+a.btn {
+  display: inline-block;
+  border: 1px solid $c_border_light;
+  border-radius: 2px;
+  text-decoration: none;
+  color: $c_text_lighten;
+  @extend .nanum;
+  &:hover {
+    color: $c_text_light;
+    border-color: $c_border;
+  }
+  &:active, &:focus {
+    color: $c_text;
+    border-color: darken($c_border, 20);
+  }
+}
+
+.actions a.btn {
+  padding: 6px 8px;
+  background-color: #fff;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+button.submit {
+  display: inline-block;
+  border: 1px solid $c_border_light;
+  border-radius: 2px;
+  text-decoration: none;
+  color: $c_text_lighten;
+  padding: 6px 8px;
+  background-color: #fff;
+  cursor: pointer;
+  @extend .nanum;
+  font-size: 0.9rem;
+  &:hover {
+    color: $c_text_light;
+    border-color: $c_border;
+  }
+  &:active, &:focus {
+    color: $c_text;
+    border-color: darken($c_border, 20);
+  }
+}
+
+a.or {
+  display: inline-block;
+  padding: 2px 0;
+  margin-left: 10px;
+  font-size: 0.8rem;
+  color: $c_light_blue;
+  @extend .nanum;
+  &:hover {
+    border-bottom: 1px solid $c_light_blue;
+  }
+  &:active, &:focus {
+    border-bottom: 1px dashed $c_light_blue;
+  }
+}
+
+.panel {
+  background: white;
+  border-radius: 4px;
+  width: 40%;
+  margin: 30px auto;
+  padding: 6px 8px;
+  .head {
+    @extend .kopub;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.4;
+    color: $c_text_lightest;
+    padding: 6px 8px;
+  }
+  .body {
+    @extend .kopub;
+    padding: 1.0rem;
+    border-radius: 0.2rem;
+    border: 1px solid $c_border_lightest;
+    .actions {
+      text-align: left;
+    }
+  }
+}
+
+form {
+  .field_with_errors input.text {
+    border-color: $bc_mind !important;
+  }
+  .hidden {
+    visibility: hidden;
+  }
+  .field {
+    @extend .clearfix;
+    margin-bottom: 15px;
+    &.fit {
+      margin: 0;
+    }
+    label {
+      color: $c_text_light;
+      font-size: 0.9rem;
+    }
+    input.text {
+      width: 100%;
+      outline: none;
+      resize: none;
+      border: none;
+      padding: 6px 0;
+      margin: 0;
+      border-bottom: 1px solid $c_border_light;
+      color: $c_text;
+      font-size: 0.9rem;
+      line-height: 1.2;
+      @extend .nanum;
+      &:active, &:focus {
+        border-bottom-style: dashed;
+      }
+    }
+    textarea.text {
+      width: 100%;
+      outline: none;
+      resize: none;
+      border: none;
+      padding: 6px 0;
+      margin: 0;
+      border-bottom: 1px solid $c_border_light;
+      color: $c_text;
+      font-size: 0.9rem;
+      line-height: 1.2;
+      @extend .nanum;
+      &:active, &:focus {
+        border-bottom-style: dashed;
+      }
+    }
+    p.readonly {
+      color: $c_text_light;
+      font-size: 0.9rem;
+      padding: 0.5rem 0.2rem 0.4rem;
+      border-bottom: 1px solid $bc_ipod;
+      background-color: $bc_mint;
+      position: relative;
+      &:after {
+        font-family: 'fontAwesome';
+        content: '\f00c';
+        color: $bc_ipod;
+        position: absolute;
+        right: 0.2rem;
+      }
+    }
+    p.error {
+      margin: 0.2rem 0;
+      padding: 0;
+      color: $bc_mind;
+      line-height: 1.2;
+      font-size: 0.8rem;
+      @extend .hv;
+    }
+  }
+  .actions {
+    @extend .nanum;
+    text-align: center;
+    button {
+    }
+    a.or {
+    }
+  }
+
+  &.inline {
+    .group {
+      border: 1px solid $c_border_light;
+      border-radius: 4px;
+      padding: 0 8px;
+      position: relative;
+      overflow: hidden;
+      input.text {
+        width: 85% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+      button.submit {
+        width: 15% !important;
+        height: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        font-size: 0.8rem;
+        border: none;
+        border-radius: 0 !important;
+        border-left: 1px solid $c_border_light;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
+  }
+
+}
+
+.paging {
+  padding: 3rem 0;
+  text-align: center;
+  .page {
+    &.gap {
+      background-color: transparent;
+      color: $c_text_lighten;
+      font-size: 1rem;
+    }
+    &.current {
+      a {
+        border: 1px solid $c_border_light;
+        background-color: $c_text_dark_white;
+        color: $c_text_lighten;
+        &:hover {
+          border: 1px solid $c_border_light;
+          text-decoration: none;
+        }
+      }
+    }
+    a {
+      background-color: white;
+      border-radius: 2px;
+      font-size: 1rem; 
+      color: $c_text_lighten;
+      border: 1px solid $c_border_light;
+      padding: 5px 10px;
+      &:hover {
+        color: $c_text;
+        text-decoration: none;
+        border-color: $c_border;
+      }
+    }
+  }
+}
+
+#flash_message {
+  position: fixed;
+  z-index: 9999;
+  top: 4px; 
+  left: 50%;
+  @include translate(-50%,0);
+  text-align: center;
+  .msg {
+    font-size: 0.9rem;
+    line-height: 2;
+    padding: 0 2rem;
+    color: white;
+    @extend .nanum;
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #000000;
+      border-radius: 5px;
+      text-align: left;
+      font-family: "fontAwesome";
+      content: "\f05a";
+      color: white;
+      text-indent: 0.7rem;
+      z-index: -1;
+      @include opacity(80);
+    }
+  }
+}
+
+#loader {
+  display:none;
+  position:absolute;
+  z-index:9999;
+  margin: 0 auto;
+  margin: 0 auto;
+  width: auto;
+  text-align: center;
+  @include animation(all 2.0s infinite linear);  
+  div {
+    width: 1rem;
+    height: 1rem;
+    background-color: #333;
+
+    border-radius: 100%;
+    display: inline-block;
+
+    @include animation(loader 1.4s infinite ease-in-out);
+    &.bounce1 { @include animation-delay(-0.32s); }
+    &.bounce2 { @include animation-delay(-0.16s); }
+  }
+}
+@include keyframes(loader) {
+  0%, 80%, 100% { 
+    @include scale(0.0, 0.0);
+  } 40% { 
+    @include scale(1.0, 1.0);
+  }
+}
