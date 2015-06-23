@@ -1,0 +1,20 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: <%= ENV['BON_DB_PASSWORD'] %>
+
+development:
+  <<: *default
+  database: bon_development
+
+test:
+  <<: *default
+  database: bon_test
+
+production:
+  <<: *default
+  database: bon_production
+  username: <%= ENV['BON_DATABASE_USER'] %>
+  password: <%= ENV['BON_DATABASE_PASSWORD'] %>
