@@ -16,5 +16,5 @@ test:
 production:
   <<: *default
   database: bon_production
-  username: <%= ENV['BON_DATABASE_USER'] %>
+  username: bon
   password: <%= ENV['BON_DATABASE_PASSWORD'] %>
