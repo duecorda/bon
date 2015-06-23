@@ -33,7 +33,7 @@ class Runner
     end
 
     def restart
-      stop
+      stop rescue nil
       start
     end
 
