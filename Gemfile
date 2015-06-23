@@ -26,6 +26,8 @@ gem 'dalli'
 
 gem 'htmlentities'
 
+gem 'unicorn'
+
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -37,4 +39,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'thin'
   gem 'database_cleaner'
+  gem "capistrano-rails"
+  gem "capistrano-rbenv"
 end
