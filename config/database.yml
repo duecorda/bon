@@ -17,4 +17,4 @@ production:
   <<: *default
   database: bon_production
   username: bon
-  password: <%= ENV['BON_DATABASE_PASSWORD'] %>
+  password: bon123!
