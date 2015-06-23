@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env /home/cm/.rbenv/shims/ruby
 require "tmpdir"
 
 APP_NAME = "bon"
