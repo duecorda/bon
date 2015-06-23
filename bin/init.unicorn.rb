@@ -4,7 +4,7 @@ require "tmpdir"
 APP_NAME = "bon"
 APP_PATH = "/opt/www/bon/current/"
 # APP_PATH = File.expand_path("../../", __FILE__)
-UNICORN_RAILS = "unicorn"
+UNICORN_RAILS = "bundle exec unicorn"
 UNICORN_CONF = "#{APP_PATH}/config/unicorn.rb"
 TMP_DIR = Dir.tmpdir
 PID_FILE = "#{TMP_DIR}/.#{APP_NAME}.unicorn.pid"
