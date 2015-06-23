@@ -5,6 +5,7 @@
 *.old
 *.bak
 /public/system/*
+/config/database.yml
 
 *.gem
 *.rbc
