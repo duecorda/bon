@@ -39,20 +39,20 @@ module ApplicationHelper
 
   def title
     _title = []
-    _title.push(@title || "글 쓰기")
+    _title.push(@title || "디지털저널리즘")
     _title.delete_if {|x| x.blank?}
     _title.join(" - ")
   end
 
   def meta_description
-    @meta_description || "글 쓰기"
+    @meta_description || "디지털저널리즘"
   end
 
   def meta_keywords
     if @meta_keywords.present?
       @meta_keywords.split(/\s+/).compact.uniq.collect {|k| k.gsub(/[^0-9a-z가-힣]/i,'')}.delete_if {|x| x.length <= 1}.join(", ")
     else
-      "글 쓰기"
+      "디지털저널리즘"
     end
   end
 

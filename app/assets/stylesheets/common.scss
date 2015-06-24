@@ -19,6 +19,11 @@ hr.sectioning {
 a {
   outline: none;
   text-decoration: none;
+  color: $c_light_blue;
+  @extend .nanum;
+  &:hover {
+    color: $c_dark_blue;
+  }
   &.ilink {
     color: $c_light_blue;
     border-bottom: 1px solid transparent;
