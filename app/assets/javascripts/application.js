@@ -12,5 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/draggable
+//= require jquery-ui/widget
+//= require jquery.fileupload
+//= require jquery.turbolinks
 //= require turbolinks
+//= require redactor
+//= require ko_redactor
+//= require highlight.pack
 //= require_tree .
