@@ -1,0 +1,49 @@
+<div class="panel">
+  <div class="head">
+    비밀번호 변경
+  </div>
+  <div class="body">
+    <%= form_for @user do |f| %>
+      <div class="field">
+        <%= f.password_field :password, :class => "text", placeholder: '비밀번호' %>
+        <%= form_error(@user, :password) %>
+      </div>
+      <div class="field">
+        <%= f.password_field :password_confirmation, :class => "text", placeholder: '비밀번호확인' %>
+        <%= form_error(@user, :password_confirmation) %>
+      </div>
+      <div class="submit">
+        <%= button_tag do %>
+          <span>비밀번호 변경</span> <%= icon("check") %>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="panel">
+  <div class="head">
+    정보수정
+  </div>
+  <div class="body">
+    <%= form_for @user do |f| %>
+      <div class="field">
+        <%= f.text_field :name, :class => "text", placeholder: '닉네임', autocomplete: 'off' %>
+        <%= form_error(@user, :name) %>
+      </div>
+      <div class="field">
+        <%= f.text_field :email, :class => "text", placeholder: '이메일', autocomplete: 'off' %>
+        <%= form_error(@user, :email) %>
+      </div>
+      <div class="submit">
+        <%= button_tag do %>
+          <span>수정완료</span> <%= icon("check") %>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+

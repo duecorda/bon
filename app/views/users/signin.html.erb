@@ -1,0 +1,21 @@
+<div class="panel">
+  <div class="head">
+    로그인
+  </div>
+  <div class="body">
+    <%= form_for :user, :url => auth_path do |f| %>
+      <div class="field">
+        <%= f.text_field :login, :class => "text smartfocus", placeholder: '아이디' %>
+      </div>
+      <div class="field">
+        <%= f.password_field :password, :class => "text", placeholder: '비밀번호' %>
+      </div>
+      <div class="actions">
+        <%= button_tag class: 'submit' do %>
+          <%= icon("sign-in") %> 로그인
+        <% end %>
+        <%= link_to "회원가입", new_user_path, class: 'or' %>
+      </div>
+    <% end %>
+  </div>
+</div>

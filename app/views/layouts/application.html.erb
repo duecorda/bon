@@ -16,11 +16,22 @@
 </head>
 <body>
   <div id="flash_message" class="fragile"><%= flash_message %></div>
+
   <header>
-    <%= link_to "bon", root_path %>
-    <nav>
-      <%= link_to "login", signin_path %>
-    </nav>
+    <div class="grid">
+      <div class="col-2-12">
+        <%= link_to "Bon", root_path, id: "logo" %>
+      </div>
+      <div class="col-10-12">
+      <nav>
+        <% if logged_in? %>
+          <%= link_to "#{icon('sign-out fa-fw')} 로그아웃".html_safe, signout_path, class: "" %>
+        <% else %>
+          <%= link_to "#{icon('sign-in')} 로그인".html_safe, signin_path, class: "btn" %>
+        <% end %>
+      </nav>
+      </div>
+    </div>
   </header>
 
   <section>
@@ -30,6 +41,25 @@
   <footer>
     2015
   </footer>
+
+  <div id="loader">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      attachLoaderToForm()
+      initFragileElement();
+      initElasticTextarea();
+      hide_flash_message();
+      initSmartFocus();
+      $('pre.code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
 
 </body>
 </html>

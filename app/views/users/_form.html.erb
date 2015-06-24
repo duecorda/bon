@@ -1,0 +1,17 @@
+<%= form_for @user do |f| %>
+  <div class="field">
+    <%= f.text_field :login, :class => "text smartfocus", placeholder: '아이디', autocomplete: 'off' %>
+  </div>
+  <div class="field">
+    <%= f.password_field :password, :class => "text", placeholder: '비밀번호' %>
+  </div>
+  <div class="field">
+    <%= f.password_field :password_confirmation, :class => "text", placeholder: '비밀번호확인' %>
+  </div>
+  <div class="actions">
+    <%= button_tag class: 'submit' do %>
+      <%= icon("check") %> 회원가입
+    <% end %>
+    <%= link_to "로그인", signin_path, class: 'or' %>
+  </div>
+<% end %>
