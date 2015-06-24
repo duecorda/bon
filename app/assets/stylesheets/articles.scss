@@ -1,0 +1,394 @@
+section {
+  max-width: $s_article_width;
+  margin: 0 auto 50px;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1.5;
+    @extend .nanum;
+    overflow: hidden;
+    color: $c_title;
+    padding: 6px 0;
+    margin-bottom: 78px;
+    letter-spacing: -1px;
+    text-align: center;
+  }
+
+  .hashtags {
+    @extend .nanum;
+    line-height: 1.5;
+    text-align: right;
+    a {
+      color: $c_text_lighten;
+      font-size: 0.9rem;
+      padding: 4px 8px;
+    }
+  }
+
+  .byline {
+    overflow: hidden;
+    font-size: 0.9rem;
+    color: $c_text_lighten;
+    text-align: right;
+    @extend .hv;
+    margin-bottom: 10px;
+    a.restrict {
+      @extend .nanum;
+      font-size: 0.9rem;
+      color: $c_text_light;
+      border-bottom: 1px solid #999;
+      margin-left: 0.5rem;
+      &:hover {
+        color: $c_light_blue;
+        border-bottom-color: $c_light_blue;
+      }
+    }
+  }
+
+  .content-area, .redactor-editor {
+    padding: 10px 0;
+    border: none;
+    text-align: justify;
+    line-height: 2.0;
+    font-size: 1rem;
+    color: $c_text;
+    overflow: hidden;
+    @extend .nanum;
+
+    @include selection {
+      color: white;
+      background-color: $c_light_blue;
+    }
+
+    div,p,ul,ol,table,dl,figure,blockquote,pre,figure,figcaption,iframe,object,hr {
+      margin: 0;
+    }
+    
+    blockquote {
+      margin: 0 !important;
+      padding: 0 !important;
+      color: $c_text;
+      font-style: normal;
+    }
+
+    pre {
+      font-size: 12px;
+      @extend .mono;
+      line-height: 22px;
+      padding: 6px 8px;
+      background: #f8f8f8;
+      border: 1px solid $c_border_light;
+      border-radius: none;
+      overflow: auto;
+      white-space: pre;
+      box-shadow: none;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 2.0;
+
+      &.h1 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        letter-spacing: -1px;
+        color: $c_title;
+      }
+      &.h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        letter-spacing: -1px;
+        color: $c_title;
+      }
+      &.h3 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        letter-spacing: -1px;
+        color: $c_title;
+      }
+      &.quote {
+        border-left: 3px solid $c_text_lighten;
+        padding: 0 0 0 1rem;
+        line-height: 2.0;
+        color: $c_text_lighten;
+        font-style: italic;
+        position: relative;
+      }
+      &.code {
+        background-color: $c_text;
+        color: white;
+      }
+    }
+
+    strong {
+      font-weight: bold;
+    }
+    em {
+      font-style: italic;
+      color: $c_text_light;
+    }
+    a {
+      color: $c_text;
+      text-decoration: none;
+      border-bottom: 1px solid $c_text;
+    }
+
+    figure {
+      width: auto;
+      text-align: center;
+      overflow: hidden;
+      &.embed {
+        line-height: 0 !important
+      }
+      &.align_left {
+        float: left;
+        margin: 0 15px 5px 0;
+      }
+      &.align_right {
+        float: right;
+        margin: 0 0 5px 15px;
+      }
+      img {
+        vertical-align: middle;
+        max-width: 100%;
+      }
+      figcaption {
+        line-height: 2.0 !important;
+        text-align: center;
+        font-size: 0.7rem;
+        font-style: italic;
+        color: $c_text_light;
+      }
+    }
+
+  }
+
+  .follow-actions {
+    margin: 5rem 0 5rem;
+    @extend .clearfix;
+
+    .recommend {
+      float: left;
+      a {
+        font-size: 3rem;
+        line-height: 1.4;
+        color: lighten($c_light_blue, 15);
+        font-weight: bold;
+        @extend .hv;
+        i {
+          @include transition(all, .1s, linear);
+          color: white;
+          text-shadow: 0 0 0.5rem $c_light_blue;
+        }
+        &:hover {
+          i {
+            text-shadow: 0 0 1rem $c_light_blue;
+            @include scale(1.1,1.1);
+          }
+        }
+        &:active, &:focus {
+          i {
+            text-shadow: 0 0 1rem $mc_red;
+          }
+        }
+      }
+    }
+
+    .sns {
+      float: right;
+      a {
+        font-size: 3rem;
+        line-height: 1.4;
+        color: $c_text_lighten;
+        i {
+          @include transition(all, .1s, ease);
+        }
+        &:hover {
+          i {
+            @include scale(1.1,1.1);
+          }
+        }
+      }
+    }
+
+    p {
+      clear: both;
+      padding-top: 1rem;
+      color: $c_text_light;
+      @extend .nanum;
+      font-size: 0.9rem;
+    }
+
+  }
+
+  .comments-wrapper {
+    padding: 1rem 0;
+    border-top: 1px solid $c_border_light;
+
+    .form_wrapper {
+    }
+
+    p {
+      line-height: 1.6;
+      color: $c_text_lighten;
+      font-size: 0.9rem;
+      @extend .nanum;
+      span {
+        color: $c_text_lighten;
+      }
+      strong {
+        color: $c_text;
+        @extend .hv;
+      }
+    }
+
+    form {
+      .field {
+        textarea.text {
+          font-size: 1rem;
+          overflow: hidden;
+          line-height: 1.6;
+          border: none;
+        }
+      }
+      .actions {
+        text-align: left;
+      }
+    }
+
+    ul.comments {
+      margin-top: 1rem;
+      border-top: 1px solid $c_border_light;
+      li.comment {
+        border-bottom: 1px solid $c_border_light;
+        padding: 1rem 0;
+        position: relative;
+        .links {
+          position: absolute;
+          right: 1rem;
+          top: 1rem;
+          a.btn {
+            font-size: 0.9rem;
+            padding: 0.4rem;
+          }
+        }
+        .comment-byline {
+          margin-bottom: 1rem;
+          a {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            @extend .hv;
+          }
+          span.date {
+            display: block;
+            @extend .dotum;
+            line-height: 2;
+            color: $c_text_lighten;
+          }
+        }
+        .comment-content {
+          @extend .nanum;
+          line-height: 1.6;
+          color: $c_text;
+        }
+        .comment-recommend {
+          padding-top: 1rem;
+          a {
+            font-size: 1.5rem;
+            line-height: 1.4;
+            border: none;
+            color: lighten($c_light_blue, 20);
+            font-weight: bold;
+            @extend .hv;
+            i {
+              @include transition(all, .1s, linear);
+              color: white;
+              text-shadow: 0 0 0.5rem $c_light_blue;
+            }
+            &:hover {
+              i {
+                text-shadow: 0 0 1rem $c_light_blue;
+                @include scale(1.1,1.1);
+              }
+            }
+            &:active, &:focus {
+              i {
+                text-shadow: 0 0 1rem $mc_red;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    a.login-first {
+      display: block;
+      margin-bottom: 5rem;
+      @extend .nanum;
+      color: $c_text_lighten;
+      font-size: 1rem;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+  }
+
+  form.article {
+    div.field {
+      label {
+        display: none;
+      }
+      input#article_title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        line-height: 1.4;
+        @extend .nanum;
+        text-align: center;
+      }
+      textarea#article_title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        line-height: 1.5;
+        @extend .nanum;
+        overflow: hidden;
+        color: $c_title;
+        letter-spacing: -1px;
+        text-align: center;
+        &.elastic {
+          visibility: hidden;
+        }
+      }
+      input#article_hashtags {
+        @extend .nanum;
+        font-size: 1rem;
+        color: $c_text_lightest;
+        font-weight: bold;
+        line-height: 1.5;
+      }
+      textarea#article_hashtags {
+        @extend .nanum;
+        font-size: 1rem;
+        color: $c_text_lighten;
+        font-weight: bold;
+        line-height: 1.5;
+        overflow: hidden;
+      }
+    }
+  }
+
+}
+
+div.article-list {
+  article.list-item {
+    h2 {
+      a {
+      }
+    }
+    p {
+      a {
+      }
+    }
+  }
+}

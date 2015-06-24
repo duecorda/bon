@@ -1,0 +1,33 @@
+<section id="redactor-modal-embed" class="modal">
+
+  <div class="ra_widget">
+    <label>임베드 코드</label>
+    <div class="ra_widget_content">
+      <%= form_tag Embed.new, method: :post, class: 'inline', remote: true do |f| %>
+        <div class="group">
+          <%= text_field_tag :source, nil, class: "text", placeholder: "코드", autocomplete: "off" %>
+          <%= button_tag "추가", class: "submit" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <hr class="orhr" />
+
+  <div class="ra_widget">
+    <label>등록된 코드 검색</label>
+    <div class="ra_widget_content">
+
+      <%= form_tag search_embeds_path, method: :get, class: 'inline', remote: true do %>
+        <div class="group">
+          <%= text_field_tag :keyword, nil, :class => "text", :placeholder => "검색어", :autocomplete => "off" %>
+          <%= button_tag "검색", :class => "submit" %>
+        </div>
+      <% end %>
+
+      <div id="matched_embeds" class="embed_injector"></div>
+    </div>
+  </div>
+
+</section>
+

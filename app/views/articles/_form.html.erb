@@ -1,0 +1,69 @@
+<%= form_for @article, :html => { :class => "breaker article" } do |f| %>
+  <%= f.hidden_field :user_id %>
+
+  <div class="field">
+    <%= f.label :title, "제목" %>
+    <%= f.text_area :title, class: "text smartfocus elastic", rows: 1, placeholder: "제목", autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hashtags, "태그" %>
+    <%= f.text_field :hashtags, class: "text", placeholder: "#태그", rows: 1, autocomplete: "off" %>
+    <%#= f.text_area :hashtags, class: "text elastic", rows: 1, placeholder: "#태그", rows: 1, autocomplete: "off" %>
+  </div>
+
+  <!-- will hide by redactor -->
+  <%= f.text_area :content, class: "text", value: @article.content, autocomplete: "off", spellcheck: false %>
+
+  <div class="actions">
+    <%= button_tag type: "submit", class: "submit" do %>
+      <%= icon("check") %> 글 발행
+    <% end %>
+  </div>
+<% end %>
+
+<script>
+  $('#article_content').redactor({
+    lang: "ko",
+    cleanStyleOnEnter: true,
+    cleanOnPaste: false,
+    cleanSpaces: false,
+    replaceDivs: false,
+    buttons: ['html', 'formatting', 'bold', 'italic', 'underline', 'deleted', 'link', 'alignment'],
+    formatting: ['p'],
+    formattingAdd: [
+      { tag: 'p', title: '헤더 #1', class: 'h1', clear: true },
+      { tag: 'p', title: '헤더 #2', class: 'h2', clear: true },
+      { tag: 'p', title: '헤더 #3', class: 'h3', clear: true },
+      { tag: 'p', title: '인용', class: 'quote', clear: true },
+      { tag: 'pre', title: '코드', class: 'code', clear: true }
+    ],
+    allowedTags: ['br', 'i', 'iframe', 'del', 'strong', 'u', 'em', 'a', 'img', 'p', 'div', 'table', 'tr', 'td', 'th', 'thead', 'tbody', 'blockquote', 'embed', 'object', 'video', 'audio', 'figure', 'figcaption', 'hr', 'pre'],
+    removeEmpty: false,
+    removeAttr:  [
+      ['p', 'style'],
+      ['a', 'style']
+    ],
+    minHeight: 320,
+    linebreaks: false,
+    imageDeleteCallback: function(url, image) {
+      var _container = $("table[data-src='" + url + "']");
+      if(_container.length > 0) {
+        _container.remove();
+      }
+    },
+    imageEditable: true,
+    imageResizable: true,
+    imageLink: false,
+    imagePosition: false,
+    tabIndex: 1,
+    convertLinks: true,
+    convertImageLinks: false,
+    convertVideoLinks: false,
+    shortcutsAdd: {
+      'ctrl+up': { func: 'insertP.action', params: ['insertBefore'] },
+      'ctrl+down': { func: 'insertP.action', params: ['insertAfter'] }
+    },
+    plugins: ['insertHR', 'insertP', 'cnp', 'photo', 'embed', 'removeObj']
+  });
+</script>

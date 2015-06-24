@@ -7,6 +7,22 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :articles do
+    collection do
+      get "ra_plugins/:template", action: :ra_plugins
+    end
+  end
+  resources :photos do
+    collection do
+      get "search"
+    end
+  end
+  resources :embeds do
+    collection do
+      get "search"
+    end
+  end
+
 	root "main#index"
 
 end

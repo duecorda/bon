@@ -1,0 +1,14 @@
+<h1><%= nl2br @article.title %></h1>
+
+<div class="byline">
+  <%= link_to @article.user.login, user_path(@article.user), class: "ilink" %>,
+  <strong><%= hdate(@article.created_at) %></strong>
+
+</div>
+
+<div class="content-area"><%= @article.content.html_safe %></div>
+
+<div class="links">
+  <%= link_to "edit", edit_article_path(@article) %>
+  <%= link_to "delete", article_path(@article), method: :delete, data: { confirm: "삭제하시겠습니까?" } %>
+</div>

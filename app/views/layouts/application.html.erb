@@ -25,7 +25,8 @@
       <div class="col-10-12">
       <nav>
         <% if logged_in? %>
-          <%= link_to "#{icon('sign-out fa-fw')} 로그아웃".html_safe, signout_path, class: "" %>
+          <%= link_to "#{icon('pencil') } 글 작성".html_safe, new_article_path, class: "btn" %>
+          <%= link_to "#{icon('sign-out fa-fw')} 로그아웃".html_safe, signout_path, class: "btn" %>
         <% else %>
           <%= link_to "#{icon('sign-in')} 로그인".html_safe, signin_path, class: "btn" %>
         <% end %>
@@ -40,6 +41,7 @@
 
   <footer>
     2015
+    <%= link_to "사용중인 CMS, Editor 불편한 점, 아이디어", "https://docs.google.com/document/d/1KE9uxLuS2aA5LCE5kptgsaYrGE2bEHcCG1eNtB7SlCA/edit?usp=sharing", target: '_blank' %>
   </footer>
 
   <div id="loader">

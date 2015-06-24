@@ -1,0 +1,15 @@
+<ul class="matched_embeds">
+  <% @embeds.each do |embed| %>
+    <li class="matched_embed">
+      <figure>
+        <%= image_mask(embed.cover, 300, 150, '50', class: 'injector', longdesc: HTMLEntities.new.encode(embed.code)) %>
+        <figcaption>
+          <%= embed.url %>
+        </figcaption>
+      </figure>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @embeds, window: 2, outer_window: 1, remote: true, theme: 'inside_widget' %>
+

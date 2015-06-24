@@ -1,0 +1,10 @@
+var __new_html = "<figure class='obj_container embed'><%=j @embed.code.html_safe %><figcaption><%= @embed.url %></figcaption></figure><p><br/></p>";
+$("#article_content").redactor("modal.close");
+$("#article_content").redactor("selection.restore");
+$("#article_content").redactor("insert.html", __new_html, false);
+$("#article_content").redactor("code.sync");
+enableForms(true);
+
+<% if /twitter\.com.*status/.match(@embed.url) %>
+init_twitter();
+<% end %>

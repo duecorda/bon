@@ -1,0 +1,14 @@
+<ul class="matched_photos">
+  <% @photos.each do |photo| %>
+    <li class="matched_photo">
+      <figure>
+        <%= image_mask(photo.url(:thumb), 300, 150, '50', class: 'injector', title: photo.title, longdesc: HTMLEntities.new.encode(sanitize(photo.title, tags: []))) %>
+        <figcaption>
+          <%= photo.title %>
+        </figcaption>
+      </figure>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @photos, window: 2, outer_window: 1, remote: true, theme: 'inside_widget' %>
