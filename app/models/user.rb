@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   def nick
     "AGENT##{self.id}"
+    login
   end
 
   def self.authenticate(attrs)

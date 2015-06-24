@@ -67,6 +67,28 @@ module ApplicationHelper
     "#{specified_url}?#{(queries.delete_if {|k,v| v.blank?}).to_param}"
   end
 
+  def cover_image(photo, opts={})
+    src = photo.url(:background)
+    width = "100%"
+    height = "auto"
+    left = "#{photo.left.to_f}%"
+    top = "#{photo.top.to_f}%"
+    size = "cover"
+
+    w,h = photo.dimensions[:original].split(/x/)
+    if w.to_i < 300
+      # width = "#{w}px"
+      # height = "#{h}px"
+      left = "50%"
+      top = "10%"
+      size = "auto"
+    end
+
+    image_tag("mask/square.gif",
+      { :style => "width:#{width};height:#{height};background:transparent url('#{src}') no-repeat #{left} #{top} / #{size}" }.merge(opts)
+    )
+  end
+
   def image_mask(src,w='100%',h='auto',t='50',opts={})
     s = opts.delete(:bgsize) || "cover"
     w = "#{w}px" if w.is_a? Fixnum

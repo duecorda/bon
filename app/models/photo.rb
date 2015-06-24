@@ -102,14 +102,14 @@ class Photo < ActiveRecord::Base
     # info = %x(convert '#{self.path(:thumb)}' -alpha set -channel rgba -colorspace rgb -fuzz 20% -fill transparent -opaque "#ffffff" -resize 1x1 txt:)
     # info = %x(convert '#{self.path(:thumb)}' -alpha set -channel rgba -colorspace rgb -fuzz 20% -fill transparent -opaque "#000000" -resize 1x1 txt:)
     # info = %x(convert '#{self.path(:thumb)}' -alpha set -channel rgba -colorspace rgb -fuzz 15% -fill transparent -opaque "#000000" -fuzz 20% -fill transparent -opaque "#ffffff" -resize 1x1 txt:)
-    # info = %x(convert '#{self.path(:thumb)}' -alpha set -channel rgba -fuzz 10% -fill transparent -opaque "#000000" -fuzz 10% -fill transparent -opaque "#ffffff" -resize 1x1 txt:)
-    # self.hex = /\s#([0-9a-f]{6,8})\s/i.match(info).to_a.last
-    # self.rgb = CustomUtils.hexToRGB(self.hex)
-    # self.hsv = CustomUtils.rgbToHsv(*self.rgb)
+    info = %x(convert '#{self.path(:thumb)}' -alpha set -channel rgba -fuzz 10% -fill transparent -opaque "#000000" -fuzz 10% -fill transparent -opaque "#ffffff" -resize 1x1 txt:)
+    self.hex = /\s#([0-9a-f]{6,8})\s/i.match(info).to_a.last
+    self.rgb = CustomUtils.hexToRGB(self.hex)
+    self.hsv = CustomUtils.rgbToHsv(*self.rgb)
 
     # get safe background position 
-    # pos = %x(#{::Rails.root.to_s}/bin/face/face.py #{self.path(:thumb)})
-    # self.left, self.top = pos.gsub(/[\r\n]/,'').split(/\s/)
+    pos = %x(#{::Rails.root.to_s}/bin/face/face.py #{self.path(:thumb)})
+    self.left, self.top = pos.gsub(/[\r\n]/,'').split(/\s/)
   end
 
   def force_set_created_at

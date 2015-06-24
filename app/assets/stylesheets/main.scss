@@ -1,4 +1,4 @@
-header {
+header.main {
   a#logo {
     @extend .hv;
     font-size: 1.5rem;
@@ -26,10 +26,109 @@ header {
   }
 }
 
-section {
+section.main {
+  .article-list {
+    .article {
+      padding-bottom: 100%;
+      position: relative;
+      overflow: hidden;
+
+      &.text-only {
+        border: 1px solid $c_border_light;
+        .card {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          overflow: hidden;
+
+          h2 {
+            position: relative;
+            top: 0;
+            @include translate(0, 0);
+            padding: 1rem;
+            a {
+              color: $c_text;
+              text-shadow: none;
+            }
+          }
+
+          p {
+            padding: 0 1rem;
+            text-align: justify;
+            display: block;
+            a {
+              font-size: 0.8rem;
+              line-height: 1.8;
+              @extend .nanum;
+              color: $c_text_light;
+              &:hover {
+                color: $c_text;
+              }
+            }
+          }
+
+          .info {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: white;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            color: $c_text_light;
+            line-height: 1.2;
+            @extend .hv;
+            a {
+              @extend .hv;
+              font-size: 0.8rem;
+              line-height: 1.2;
+            }
+          }
+
+        }
+      }
+
+      .card {
+        h2 {
+          background-color: transparent;
+          position: absolute;
+          top: 50%;
+          @include translate(0, -50%);
+          width: 100%;
+          z-index: 1;
+          text-align: center;
+          padding: 0 1rem;
+          a {
+            @extend .nanum;
+            font-size: 1.2rem;
+            line-height: 1.4;
+            color: white;
+            text-shadow: 0 0 3px $c_text;
+          }
+        }
+
+        figure {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          border-radius: 3px;
+          overflow: hidden;
+        }
+
+        p {
+          display: none;
+        }
+
+      }
+
+    } // article
+  } // article-list
 }
 
-footer {
+footer.main {
   text-align: center;
   margin: 5rem 0;
   font-size: 0.8rem;

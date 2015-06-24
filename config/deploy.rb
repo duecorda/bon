@@ -3,7 +3,8 @@ lock '3.4.0'
 
 set :application, 'bon'
 set :repo_url, 'git@github.com:duecorda/bon.git'
-set :rbenv_ruby, '2.1.2'
+# set :rbenv_ruby, '2.1.2'
+set :rbenv_ruby, '2.2.1'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

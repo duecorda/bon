@@ -1,4 +1,4 @@
-section {
+section.article {
   max-width: $s_article_width;
   margin: 0 auto 50px;
 
@@ -335,7 +335,7 @@ section {
 
   }
 
-  form.article {
+  &.form {
     div.field {
       label {
         display: none;

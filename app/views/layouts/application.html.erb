@@ -17,8 +17,8 @@
 <body>
   <div id="flash_message" class="fragile"><%= flash_message %></div>
 
-  <header>
-    <div class="grid">
+  <header class="main">
+    <div class="grid grid-pad">
       <div class="col-2-12">
         <%= link_to "Bon", root_path, id: "logo" %>
       </div>
@@ -35,12 +35,11 @@
     </div>
   </header>
 
-  <section>
+  <section class="main">
     <%= yield %>
   </section>
 
-  <footer>
-    2015
+  <footer class="main">
     <%= link_to "사용중인 CMS, Editor 불편한 점, 아이디어", "https://docs.google.com/document/d/1KE9uxLuS2aA5LCE5kptgsaYrGE2bEHcCG1eNtB7SlCA/edit?usp=sharing", target: '_blank' %>
   </footer>
 
