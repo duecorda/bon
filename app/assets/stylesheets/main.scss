@@ -5,6 +5,7 @@ header.main {
   left: 0;
   right: 0;
   background-color: white;
+  z-index: 999;
   a#logo {
     @extend .hv;
     font-size: 1.5rem;
@@ -72,6 +73,7 @@ section.main {
   margin: 80px 0 0 0;
   .article-list {
     .article {
+      border: 1px solid transparent;
       padding-bottom: 100%;
       position: relative;
       overflow: hidden;
@@ -124,9 +126,13 @@ section.main {
             line-height: 1.2;
             @extend .hv;
             a {
+              color: $c_light_blue;
               @extend .hv;
               font-size: 0.8rem;
               line-height: 1.2;
+              &:hover {
+                border-bottom-color: $c_light_blue;
+              }
             }
           }
 
@@ -175,7 +181,7 @@ section.main {
           color: $c_text_dark_white;
           font-size: 0.9rem;
           @extend .hv;
-          a.ilink {
+          a {
             color: $c_text_dark_white;
             position: absolute;
             left: 8px;
