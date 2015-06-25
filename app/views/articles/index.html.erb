@@ -4,7 +4,7 @@
       <% photo = article.photos.first %>
       <div class="grid">
         <div class="col-2-12">
-        <%= image_mask(photo.url(:hot), 120, 80, photo.top.to_i) %>
+        <%= image_mask(photo.url(:hot), 120, 80, photo.top.to_i) if photo.present? %>
         </div>
         <div class="col-10-12">
         <h1><%= link_to article.title, article_path(article) %></h1>

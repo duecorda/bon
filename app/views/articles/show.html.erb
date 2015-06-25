@@ -1,11 +1,4 @@
 <section class="article form">
-
-
-  <% @article.photos.each do |photo| %>
-    <%#= image_tag(photo.url(:hot), style: "width:120px;height:80px;") %><br/>
-    <%= image_mask(photo.url(:main), 480, 320, photo.top.to_i) %>
-  <% end %>
-
   <h1><%= nl2br @article.title %></h1>
 
   <div class="byline">
