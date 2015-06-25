@@ -46,15 +46,26 @@ class Photo < ActiveRecord::Base
     File.extname(File.basename(self.original_filename)).downcase
   end
 
+  def self.styles
+    [
+      { :name => 'main', :size => "600x" },
+      { :name => 'section', :size => "480x" },
+      { :name => 'se', :size => "320x" },
+      { :name => 'hot', :size => "120x" }
+    ]
+  end
+
   def attachment=(filedata)
     raise 'filedata is missing.' if filedata.blank?
 
     if filedata.respond_to? :original_filename
       self.original_filename = filedata.original_filename.to_s.downcase
-      image = MiniMagick::Image.read(filedata.read)
+      _dat = filedata.read
+      image = MiniMagick::Image.read(_dat.clone)
     else
       self.original_filename = filedata.to_s.downcase
-      image = MiniMagick::Image.open(filedata)
+      _dat = filedata
+      image = MiniMagick::Image.open(_dat.clone)
     end
 
     self.force_set_created_at
@@ -110,6 +121,16 @@ class Photo < ActiveRecord::Base
     # get safe background position 
     pos = %x(#{::Rails.root.to_s}/bin/face/face.py #{self.path(:thumb)})
     self.left, self.top = pos.gsub(/[\r\n]/,'').split(/\s/)
+
+    Photo.styles.each do |style|
+      _i = MiniMagick::Image.read(_dat.clone)
+
+      _i.resize style[:size]
+      
+      _i.write self.path(style[:name])
+      _i.destroy!
+    end
+
   end
 
   def force_set_created_at

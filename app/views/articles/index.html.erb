@@ -1,7 +1,15 @@
-<div class="grid">
-  <div class="col-8-12 push-2-12">
+<div class="grid grid-pad">
+  <div class="col-1-1">
     <% @articles.each do |article| %>
-      <h1><%= link_to article.title, article_path(article) %></h1>
+      <% photo = article.photos.first %>
+      <div class="grid">
+        <div class="col-2-12">
+        <%= image_mask(photo.url(:hot), 120, 80, photo.top.to_i) %>
+        </div>
+        <div class="col-10-12">
+        <h1><%= link_to article.title, article_path(article) %></h1>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
