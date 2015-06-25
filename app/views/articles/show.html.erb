@@ -1,16 +1,26 @@
-<section class="article form">
+<section class="article">
+  <% unless @article.owned_by?(@current_user) %>
+  <div class="privileges">
+    <%= link_to "수정".html_safe, edit_article_path(@article), class: 'btn' %>
+    <%= link_to "삭제", article_path(@article), method: :delete, data: { confirm: "삭제하시겠습니까?" }, class: 'btn' %>
+  </div>
+  <% end %>
   <h1><%= nl2br @article.title %></h1>
+
 
   <div class="byline">
     <%= link_to @article.user.login, user_path(@article.user), class: "ilink" %>,
-    <strong><%= hdate(@article.created_at) %></strong>
-
+    <strong><%= hdate(@article.created_at) %></strong>,
+    <%= @article.hits_count %>
   </div>
 
   <div class="content-area"><%= @article.content.html_safe %></div>
 
-  <div class="links">
-    <%= link_to "edit", edit_article_path(@article) %>
-    <%= link_to "delete", article_path(@article), method: :delete, data: { confirm: "삭제하시겠습니까?" } %>
+  <div class="follow-actions">
+  <div class="sns">
+    <%= link_to icon("facebook"), share_url('facebook', link: @article.share_url), class: "sns_share" %>
+    <%= link_to icon("twitter"), share_url('twitter', link: @article.share_url, text: "#{@article.title} #{@article.hashtags}".truncate(100)), class: "sns_share" %>
   </div>
+  </div>
+
 </section>

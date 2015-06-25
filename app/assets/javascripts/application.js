@@ -15,6 +15,8 @@
 //= require jquery-ui/draggable
 //= require jquery-ui/widget
 //= require jquery.fileupload
+//= require jquery.imgareaselect.min.js
+//= require jquery-ui/autocomplete
 //= require jquery.turbolinks
 //= require turbolinks
 //= require redactor

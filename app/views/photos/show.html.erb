@@ -1,0 +1,26 @@
+<%= image_tag(@photo.url(:thumb), id: 'photo') %>
+
+<% if File.exist?(@photo.path(:crop)) %>
+<div>
+  <%= image_tag(@photo.url(:crop)) %>
+</div>
+<% end %>
+
+<script>
+  $(document).ready(function () {
+
+    $('img#photo').imgAreaSelect({
+      handles: true,
+      onSelectEnd: function(img, selection) {
+        var photo_id = '<%= @photo.id %>';
+        var url = "/photos/" + photo_id + "/crop?x=" + selection.x1 + "&y=" + selection.y1 + "&w=" + selection.width + "&h=" + selection.height
+        $.ajax(url, {
+          complete: function() {
+            location.reload();
+          }
+        });
+      }
+    });
+
+  });
+</script>

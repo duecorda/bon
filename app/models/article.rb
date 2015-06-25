@@ -1,4 +1,7 @@
 class Article < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  index_name "bon-article-#{Rails.env}"
 
   validates :title, :presence => {message: '제목을 입력하세요'}
   validates :content, :presence => {message: '내용을 입력하세요'}
@@ -93,6 +96,46 @@ class Article < ActiveRecord::Base
       obsolete = Photo.find_by(hashkey: hashkey)
       self.articles_photos.find_by(photo_id: obsolete.id).destroy
     end
+  end
+
+  def share_url
+    "http://#{SiteHost}/articles/#{self.id}"
+  end
+
+  def update_share_count
+    begin
+      fb_req_url = "https://graph.facebook.com/?id=" + self.share_url
+      fb_res = Typhoeus.get(fb_req_url)
+      fb_data = JSON.parse(fb_res.body.force_encoding(Encoding::UTF_8))
+      fb_counts = fb_data["shares"].to_i
+    
+      tw_req_url = "https://cdn.api.twitter.com/1/urls/count.json?url=" + self.share_url
+      tw_res = Typhoeus.get(tw_req_url)
+      tw_data = JSON.parse(tw_res.body.force_encoding(Encoding::UTF_8))
+      tw_counts = tw_data["count"].to_i
+
+      self.update_attributes(
+        :share_count_fb => fb_counts,
+        :share_count_tw => tw_counts
+      )
+    rescue Exception => e
+      # .....
+    end
+  end
+
+  ###
+  ### Elasticsearch 
+  ###
+  settings index: { number_of_shards: 1 } do
+#    mapping dynamic: 'false' do
+#      indexes :title
+#    end
+  end
+
+  def self.reindex!
+    self.__elasticsearch__.create_index! force: true
+    self.__elasticsearch__.refresh_index!
+    self.import
   end
 
 end

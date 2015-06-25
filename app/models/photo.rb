@@ -65,7 +65,8 @@ class Photo < ActiveRecord::Base
     else
       self.original_filename = filedata.to_s.downcase
       _dat = filedata
-      image = MiniMagick::Image.open(_dat.clone)
+      _dat = MiniMagick::Image.open(filedata).to_blob
+      image = MiniMagick::Image.read(_dat.clone)
     end
 
     self.force_set_created_at

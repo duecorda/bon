@@ -1,6 +1,6 @@
 section.article {
   max-width: $s_article_width;
-  margin: 0 auto 50px;
+  margin: 130px auto 50px;
 
   h1 {
     font-size: 2.5rem;
@@ -23,6 +23,14 @@ section.article {
       color: $c_text_lighten;
       font-size: 0.9rem;
       padding: 4px 8px;
+    }
+  }
+
+  .privileges {
+    text-align: right;
+    a.btn {
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
     }
   }
 
@@ -154,6 +162,7 @@ section.article {
         max-width: 100%;
       }
       figcaption {
+        background-color: #f2f2f2;
         line-height: 2.0 !important;
         text-align: center;
         font-size: 0.7rem;
@@ -201,6 +210,7 @@ section.article {
         font-size: 3rem;
         line-height: 1.4;
         color: $c_text_lighten;
+        margin-left: 1rem;
         i {
           @include transition(all, .1s, ease);
         }

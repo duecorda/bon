@@ -1,0 +1,10 @@
+<ul class="matched_photos">
+  <li class="matched_photo">
+    <figure>
+      <%= image_mask(@photo.url(:thumb), 300, 150, '50', class: 'injector', title: @photo.title, longdesc: HTMLEntities.new.encode(sanitize(@photo.title, tags: []))) %>
+      <figcaption>
+        <%= @photo.title %>
+      </figcaption>
+    </figure>
+  </li>
+</ul>

@@ -13,27 +13,54 @@
   <meta name="keywords" content="<%= meta_keywords %>" />
   <meta name="description" content="<%= meta_description %>" />
   <meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1" />
+  <%= render :partial => '/main/og_meta' %>
 </head>
 <body>
   <div id="flash_message" class="fragile"><%= flash_message %></div>
 
   <header class="main">
     <div class="grid grid-pad">
-      <div class="col-2-12">
+
+      <div class="col-1-12">
         <%= link_to "Bon", root_path, id: "logo" %>
       </div>
-      <div class="col-10-12">
-      <nav>
-        <% if logged_in? %>
-          <%= link_to "#{icon('pencil') } 글 작성".html_safe, new_article_path, class: "btn" %>
-          <%= link_to "#{icon('sign-out fa-fw')} 로그아웃".html_safe, signout_path, class: "btn" %>
-        <% else %>
-          <%= link_to "#{icon('sign-in')} 로그인".html_safe, signin_path, class: "btn" %>
+
+      <div class="col-6-12">
+        <%= form_tag "/search", :method => :get do |f| %>
+          <div class="fields">
+            <%= text_field_tag :q, params[:q], class: "text", autocomplete: "off", placeholder: "검색" %>
+          </div>
         <% end %>
-      </nav>
+        <ul id="suggestions"></ul>
       </div>
+
+      <div class="col-5-12">
+        <nav>
+          <% if logged_in? %>
+            <%= link_to "#{icon('pencil') } 글 작성".html_safe, new_article_path, class: "btn" %>
+            <%= link_to "#{icon('sign-out fa-fw')} 로그아웃".html_safe, signout_path, class: "btn" %>
+          <% else %>
+            <%= link_to "#{icon('sign-in')} 로그인".html_safe, signin_path, class: "btn" %>
+          <% end %>
+        </nav>
+      </div>
+
     </div>
   </header>
+
+  <script>
+    $(document).ready(function() {
+      $("input#q")
+      .autocomplete({
+        appendTo: "#suggestions",
+        source: '<%= autocomplete_articles_path %>',
+        minLength: 2,
+        select: function(event, article) {
+          location.href = article.item.link;
+        }
+      });
+    });
+  </script>
 
   <section class="main">
     <%= yield %>

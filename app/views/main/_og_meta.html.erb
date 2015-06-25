@@ -1,0 +1,20 @@
+<meta property="og:title" content="<%= title %>"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="<%= @url || request.url %>"/>
+<meta property="og:image" content="<%= @og_image || "http://#{SiteHost}/assets/logo.png" %>"/>
+<meta property="og:site_name" content="디지털저널리즘"/>
+<meta property="og:description" content="<%= meta_description %>"/>
+
+
+<% if @og_image.present? %>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="<%= @og_image %>" />
+<% else %>
+<meta name="twitter:card" content="summary" />
+<% end %>
+<meta name="twitter:url" content="<%= @url %>" />
+<meta name="twitter:site" content="@syndication">
+<meta name="twitter:title" content="<%= @title %>">
+<meta name="twitter:description" content="<%= meta_description %>">
+
+

@@ -17,6 +17,22 @@
   <hr class="orhr" />
 
   <div class="ra_widget">
+    <label>URL 사진 등록</label>
+    <div class="ra_widget_content">
+
+      <%= form_tag fetch_photos_path, method: :get, class: 'inline', remote: true do %>
+        <div class="group">
+          <%= text_field_tag :photo_url, nil, :class => "text", :placeholder => "사진URL", :autocomplete => "off" %>
+          <%= button_tag "업로드", :class => "submit" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+
+  <hr class="orhr" />
+
+  <div class="ra_widget">
     <label>등록된 사진 검색</label>
     <div class="ra_widget_content">
 

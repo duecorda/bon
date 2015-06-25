@@ -11,8 +11,7 @@
 
             <% if photo.present? %>
             <figure>
-            <%= link_to cover_image(photo), article %>
-            <%#= link_to image_tag(photo.url(:thumb)), article %>
+              <%= link_to cover_image(photo), article %>
             </figure>
             <% end %>
 
@@ -22,6 +21,7 @@
 
             <div class="info">
               <%= link_to article.user.nick, user_path(article.user), class: "ilink" %>
+              <%= icon('eye') %> <%= article.hits_count.to_i %>
             </div>
           </div>
 

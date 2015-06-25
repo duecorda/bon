@@ -1,5 +1,9 @@
 <div class="grid grid-pad">
   <div class="col-1-1">
+
+    <%= link_to "최신순", add_query(sort: nil) %>
+    <%= link_to "조회수 높은 순", add_query(sort: 'hits_count') %>
+
     <% @articles.each do |article| %>
       <% photo = article.photos.shuffle.first %>
       <div class="grid">
@@ -14,8 +18,10 @@
         </div>
         <div class="col-10-12">
         <h1><%= link_to article.title, article_path(article) %></h1>
+        <%= article.hits_count %>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+

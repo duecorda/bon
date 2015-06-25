@@ -1,4 +1,10 @@
 header.main {
+  border-bottom: 1px solid $c_border_light;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
   a#logo {
     @extend .hv;
     font-size: 1.5rem;
@@ -6,8 +12,6 @@ header.main {
     font-weight: bold;
     font-variant: small-caps;
     color: $c_text_light;
-    height: 50px;
-    line-height: 50px;
     &:hover {
       color: $c_light_blue;
     }
@@ -15,10 +19,48 @@ header.main {
       color: $c_dark_blue;
     }
   }
+  form {
+    .fields {
+      input.text {
+        @extend .nanum;
+        border: 1px solid $c_border;
+        font-size: 0.9rem;
+        line-height: 1.2;
+        width: 220px;
+        padding: 0.4rem 0.2rem;
+        border-radius: 2px;
+        position: relative;
+        &:after {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          content: '\f123';
+          font-family: "fontAwesome";
+          z-index: 999;
+        }
+      }
+    }
+  }
+  ul#suggestions {
+    position: absolute;
+    z-index: 2;
+    ul {
+      background-color: white;
+      border: 1px solid $c_border;
+      li {
+        padding: 0.4rem 1rem 0.4rem 0.2rem;
+        @extend .nanum;
+        font-size: 0.9rem;
+        &.ui-state-focus {
+          background-color: #f2f2f2;
+        }
+      }
+    }
+  }
   nav {
     display: block;
     text-align: right;
-    padding-top: 10px;
     a {
       padding: 0.5rem 1rem;
       font-size: 0.9rem;
@@ -27,6 +69,7 @@ header.main {
 }
 
 section.main {
+  margin: 80px 0 0 0;
   .article-list {
     .article {
       padding-bottom: 100%;
@@ -72,6 +115,7 @@ section.main {
           .info {
             position: absolute;
             bottom: 0;
+            left: 0;
             width: 100%;
             background: white;
             padding: 0.5rem;
@@ -101,7 +145,7 @@ section.main {
           padding: 0 1rem;
           a {
             @extend .nanum;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             line-height: 1.4;
             color: white;
             text-shadow: 0 0 3px $c_text;
@@ -120,6 +164,25 @@ section.main {
 
         p {
           display: none;
+        }
+
+        .info {
+          position: absolute;
+          width: 100%;
+          text-align: right;
+          padding: 8px;
+          bottom: 0;
+          color: $c_text_dark_white;
+          font-size: 0.9rem;
+          @extend .hv;
+          a.ilink {
+            color: $c_text_dark_white;
+            position: absolute;
+            left: 8px;
+            &:hover {
+              border-bottom-color: $c_text_dark_white;
+            }
+          }
         }
 
       }
