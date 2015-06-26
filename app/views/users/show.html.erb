@@ -1,0 +1,34 @@
+<div class="article-list">
+  <div class="grid grid-pad">
+
+    <% @articles.each do |article| %>
+      <% photo = article.photos[0] %>
+
+      <div class="col-3-12">
+        <div class="article <%= "text-only" if photo.blank? %>">
+          <div class="card">
+            <h2><%= link_to article.title, article_path(article) %></h2>
+
+            <% if photo.present? %>
+            <figure>
+              <%= link_to cover_image(photo), article %>
+            </figure>
+            <% end %>
+
+            <p>
+              <%= link_to article.text_content.truncate(101), article %>
+            </p>
+
+            <div class="info">
+              <%= link_to article.user.nick, user_path(article.user), class: "ilink" %>
+              <%= icon('eye') %> <%= article.hits_count.to_i %>
+            </div>
+          </div>
+
+        </div> <!-- article -->
+      </div>
+    <% end %>
+
+  </div>
+</div>
+

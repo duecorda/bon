@@ -11,7 +11,7 @@
   <div class="byline">
     <%= link_to @article.user.login, user_path(@article.user), class: "ilink" %>,
     <strong><%= hdate(@article.created_at) %></strong>,
-    <%= @article.hits_count %>
+    <%= icon("eye") %> <%= @article.hits_count %>
   </div>
 
   <div class="content-area"><%= @article.content.html_safe %></div>

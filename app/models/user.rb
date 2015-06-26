@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   before_save :salting_password
 
+  has_many :articles
+
   def nick
     "AGENT##{self.id}"
     login
