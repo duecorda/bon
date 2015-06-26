@@ -24,3 +24,16 @@
   </div>
 
 </section>
+
+<script>
+  $(document).ready(function() {
+    $("figure img.image").click(function() {
+      var src = $(this).attr("src");
+      var matches = /\/system\/photos\/[0-9]{4}\/[0-9]{1,2}\/[0-9]{1,2}\/([^\/]+)/.exec(src);
+      if(matches.length > 1) {
+        var hashkey = matches[1];
+        console.log(hashkey);
+      }
+    });
+  });
+</script>

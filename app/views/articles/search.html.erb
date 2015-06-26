@@ -9,10 +9,12 @@
       <div class="grid">
         <div class="col-2-12">
 
+        <% if photo.present? %>
         <% if File.exist?(photo.path(:crop)) %>
           <%= image_mask(photo.url(:crop)) %>
         <% else %>
           <%= image_mask(photo.url(:hot), 120, 80, photo.top.to_i) if photo.present? %>
+        <% end %>
         <% end %>
 
         </div>

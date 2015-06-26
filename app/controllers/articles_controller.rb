@@ -73,7 +73,7 @@ class ArticlesController < ApplicationController
     if params[:sort].blank?
       @articles = Article.search(query: {
         query_string: {
-          fields: ["content"],
+          fields: ["title", "content", "hashtag"],
           query: queries.join(" AND "),
           use_dis_max: true
         }
@@ -81,7 +81,7 @@ class ArticlesController < ApplicationController
     else
       @articles = Article.search(query: {
         query_string: {
-          fields: ["content"],
+          fields: ["title", "content", "hashtag"],
           query: queries.join(" AND "),
           use_dis_max: true
         }
